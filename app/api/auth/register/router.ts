@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
 
 
         await connecttoDatabase()
-        const existingUser = await User.findOne({ email })
+        const existingUser = await User.findOne({email})
         if (existingUser) {
             return NextResponse.json({ error: "Email is already registered" },
                 { status: 400 }
@@ -27,13 +27,23 @@ export async function POST(request: NextRequest) {
         })
         return NextResponse.json({ message: "User registered successfully" },
             { status: 201 }
-        )
+        );
         }
     }
     catch (error) {
         return NextResponse.json({ error: "Failed to register User" },
             { status: 500 }
-        )
+        );
      }
 
 }
+// fetch("/api/auth/register", {
+//     method: "POST",
+//     headers: {
+//         "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({email,password}),
+// })
+
+
+        
